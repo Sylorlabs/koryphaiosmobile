@@ -1,0 +1,156 @@
+bun test v1.3.14 (d1632b29)
+
+tests/mobile-workspace.test.tsx:
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) wide and compact workspaces retain both drafts and scope a single submission [81.51ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) resizing during wide composer preflight cannot send a stale attempt [15.50ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) wide composer keeps attachments visible and applies image consent [14.97ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) wide attention renders its answer controls and preserves the blocked composer draft [6.83ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) wide Stop remains single-dispatch across a compact layout transition [8.04ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+352 |   expect(requests).toHaveLength(1);
+353 |   expect(answerInput().props.value).toBe('  Preserve this exact answer  ');
+354 |   await showMobileAttention();
+355 |   expect(answerInput().props.value).toBe('  Preserve this exact answer  ');
+356 |   expect(button('Send answer').props.disabled).toBe(true);
+357 |   expect(routes).toHaveLength(0);
+                       ^
+error: expect(received).toHaveLength(expected)
+
+Expected length: 0
+Received length: 1
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/mobile-workspace.test.tsx:357:18)
+(fail) failed attention answers survive wide-to-mobile remount without navigating away [5.30ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+374 |   expect(button('Send answer').props.disabled).toBe(true);
+375 |   await resizeWorkspace(1440);
+376 |   expect(button('Send answer').props.disabled).toBe(true);
+377 |   expect(textOf(tree.root)).toContain('Waiting for desktop confirmation');
+378 |   expect(requests).toHaveLength(1);
+379 |   expect(routes).toHaveLength(0);
+                       ^
+error: expect(received).toHaveLength(expected)
+
+Expected length: 0
+Received length: 1
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/mobile-workspace.test.tsx:379:18)
+(fail) submitted attention stays visibly pending after transport completion and remount [2.58ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) attention text belongs to its original host and prompt across navigation [1.97ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) mobile review preserves its pending decision and blocks an opposite decision across remount [2.40ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) Listen targets its originating chat and cancels a delayed response across A to B to A [10.82ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) pending system voice lookup cannot speak after chat [6.23ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) pending system voice lookup cannot speak after host [3.87ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) pending system voice lookup cannot speak after blur [5.26ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) pending system voice lookup cannot speak after background [2.79ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) pending system voice lookup cannot speak after unmount [2.41ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) cancel during asynchronous speech stop prevents both lookup and playback [2.93ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) a new Listen supersedes pending synthesis without playing the old response [5.04ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) a delayed system stop settles before replacement speech starts, even across remount [6.44ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) generated audio releases its player and cache file on completion [4.32ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) generated audio releases its player and cache file on error [3.33ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) generated audio releases its player and cache file on background [4.43ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) generated audio releases its player and cache file on unmount [3.14ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) system speech failure is visible, and a stale failure cannot overwrite another host [7.65ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) unsupported synthesis content produces a visible error without creating a player [6.40ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) cancelling while the speech file is being written cleans it only after writing settles [3.55ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) connection identity distinguishes connecting, disconnected, failed, and connected states [4.37ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) double Send snapshots one explicit destination and preserves both drafts after rejection [8.13ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) late preview cannot send after A to B to A navigation [3.92ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) preflight is invalidated by model [4.43ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) preflight is invalidated by reasoning [2.72ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) preflight is invalidated by fast [5.05ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) preflight is invalidated by blur [2.21ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) preflight is invalidated by host [2.05ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) preflight is invalidated by question [2.57ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) preflight is invalidated by run [2.30ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) editing during an image preference read cancels the send [4.39ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) double image consent cannot dispatch twice while saving a preference [8.10ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) remote agent consent is scoped and duplicate confirmation sends once [3.87ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) late picker belongs to its originating chat [2.53ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) late clipboard belongs to its originating chat [2.82ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) no-chat state disables Send and offers chat selection [3.99ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) Stop locks synchronously and late failure does not appear in a different chat [2.51ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) Stop stays locked across a Workspace remount until the original command settles [5.47ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) Regenerate dispatches once with the menu's explicit chat/project [2.82ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) Hide from this view dispatches once with the menu's explicit chat/project [2.47ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) Save as note dispatches once with the menu's explicit chat/project [2.25ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) Response 2 of 2 dispatches once with the menu's explicit chat/project [4.00ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) delete confirmation resets on dismiss, a different message, and failure [7.50ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) an older completion cannot close a reopened menu for response A [4.37ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) an older completion cannot close a reopened menu for response B [2.92ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) message actions reject stale A to B to A callbacks and ignore another host’s late failure [9.78ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) failed transcription preserves recording separately from newer typing [5.45ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) leaving the chat stops dictation and preserves audio without remote transcription [3.25ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) backgrounding stops dictation and late preparation never starts a hidden recording [1.92ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) oversized dictation stays on disk, offers export, and never enters a send [8.19ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) unreadable dictation retains an exportable recording and shows export failure [3.66ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) reference searches lock synchronously and newer queries own their results [6.24ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) closed reference picker cannot accept old results after reopen or host change [11.66ms]
+
+2 tests failed:
+(fail) failed attention answers survive wide-to-mobile remount without navigating away [5.30ms]
+(fail) submitted attention stays visibly pending after transport completion and remount [2.58ms]
+
+ 56 pass
+ 2 fail
+ 410 expect() calls
+Ran 58 tests across 1 file. [986.00ms]

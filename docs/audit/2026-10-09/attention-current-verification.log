@@ -1,0 +1,69 @@
+bun test v1.3.14 (d1632b29)
+
+tests/control-provider.test.tsx:
+(pass) provider integration: isolated native-I/O cases [519.19ms]
+
+tests/attention-dispatch.test.tsx:
+12 |     const child = spawnSync(process.execPath, ['test', import.meta.path], {
+13 |       env: { ...process.env, KORYPHAIOS_ATTENTION_DISPATCH_TEST_CHILD: '1' },
+14 |       encoding: 'utf8', timeout: 30_000,
+15 |     });
+16 |     if (child.error || child.status !== 0) {
+17 |       throw new Error(child.error?.message ?? `Attention dispatch tests failed (${child.status}):\n${child.stdout}\n${child.stderr}`);
+                                                                                                                                         ^
+error: Attention dispatch tests failed (1):
+
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/attention-dispatch.test.tsx:17:133)
+(fail) attention dispatch: isolated provider and real transport integration [126.48ms]
+
+tests/attention-responses.test.ts:
+(pass) attention submission retains text and locks until an observed host resolution [0.29ms]
+(pass) empty connection and disconnected states never acknowledge an attention response [0.04ms]
+(pass) attention failure preserves the draft and an older attempt cannot modify its manual retry [0.03ms]
+(pass) attention identity isolates hosts, chats, prompt revisions and legacy ID-less prompts [0.06ms]
+(pass) a new prompt does not inherit a pending lock or erase its unsent draft [0.03ms]
+(pass) review decisions remain locked after submission and settle only from that host and review [0.03ms]
+(pass) fresh-client resolution settles saved work only for the matching origin and prompt [0.04ms]
+(pass) authoritative absence closes rather than confirms an unsent or submitted answer [0.19ms]
+(pass) unknown resolution status does not settle a saved response [0.10ms]
+(pass) a late identified resolution can confirm the old prompt without settling its replacement [0.15ms]
+(pass) ID-less legacy completion cannot confirm an identified response [0.13ms]
+
+tests/remote-events.test.js:
+(pass) resume replaces a stale open socket and restores the active subscription [0.43ms]
+(pass) suspension cancels retries; repeated resume/suspend does not duplicate sockets [0.08ms]
+(pass) socket errors recover even if the platform never emits close; backoff increases [0.03ms]
+(pass) the first native output chunk is bounded as well as later chunks [0.27ms]
+(pass) linked transport reports connecting until an actual host response [0.36ms]
+(pass) late linked snapshot cannot resurrect a resolved question or regress run state [0.22ms]
+(pass) linked resume reopens the session once; disposal ignores pending responses [0.14ms]
+(pass) linked answer and review failures propagate to the control provider [0.24ms]
+(pass) linked run/output and other-chat events cannot suppress pending attention snapshots [0.13ms]
+(pass) linked malformed and unknown-status events cannot hide pending attention snapshots [0.11ms]
+(pass) linked newer question survives an old snapshot while the other attention kind loads [0.07ms]
+(pass) linked newer question survives an absent snapshot while the other attention kind loads [0.02ms]
+(pass) linked resolved question stays closed while the other attention kind loads [0.15ms]
+(pass) linked newer review survives an old snapshot while the other attention kind loads [0.01ms]
+(pass) linked newer review survives an absent snapshot while the other attention kind loads
+(pass) linked resolved review stays closed while the other attention kind loads [0.03ms]
+(pass) linked unrelated events cannot suppress authoritative absence when reconnecting [0.27ms]
+(pass) linked late opens cannot overwrite attention after a chat A-B-A selection [0.10ms]
+(pass) real socket reconnect and prompt replay cannot acknowledge or erase an answer [0.20ms]
+(pass) reconnecting while another chat is active rechecks previous unanswered sessions [0.12ms]
+(pass) direct late resolutions cannot remove a replacement question or review [0.14ms]
+(pass) linked late resolutions cannot remove a replacement question or review [0.02ms]
+(pass) linked snapshot absence closes the prompt without claiming the response succeeded [0.12ms]
+(pass) replacement prompts preserve an unconfirmed response instead of marking it successful [0.10ms]
+(pass) direct unknown resolution events preserve live prompts and waiting responses [0.21ms]
+(pass) direct late host confirmation settles only the original saved prompt [0.15ms]
+(pass) linked unknown resolution events preserve live prompts and waiting responses [0.06ms]
+(pass) linked late host confirmation settles only the original saved prompt [0.08ms]
+
+1 tests failed:
+(fail) attention dispatch: isolated provider and real transport integration [126.48ms]
+
+ 40 pass
+ 1 fail
+ 133 expect() calls
+Ran 41 tests across 4 files. [1213.00ms]

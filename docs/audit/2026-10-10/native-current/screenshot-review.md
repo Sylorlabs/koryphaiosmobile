@@ -1,0 +1,21 @@
+# Koryphaios mobile: current five-device native visual checkpoint
+
+Captured and inspected: 2026-10-10, approximately 20:05–20:07 PDT. App: `com.koryphaios.mobile`, display version `1.0.0`, iOS 27 simulators. **Evidence level N-visual only:** images prove rendered pixels at capture time, not user interaction, persistent behavior, linked/direct host effects, accessibility, build signing, or hardware compatibility.
+
+| ID | Device | Capture | Visible state | Follow-up |
+| --- | --- | --- | --- | --- |
+| VIS-01 | iPhone 17 Pro | [`01-iphone-17-pro.png`](01-iphone-17-pro.png) | **Agent behavior** rows and toggles are legible, including enforcement, execution mode, preferences, external paths and review/critic settings. Gray `Open debugger to view warnings.` development notice covers the bottom. | Get the actual console warning, retest scroll/focus/toggles with development overlay cleared or with a production-like build. Confirm persistence on the desktop before calling a control functional. |
+| VIS-02 | iPhone 17 Pro Max | [`02-iphone-17-pro-max.png`](02-iphone-17-pro-max.png) | iOS **`Open in “Koryphaios”?`** system confirmation obscures the app. Blue **`Refreshing...`** band behind it. | Dismiss/accept using the simulator UI, wait for a settled view, then recapture and operate the route. **Not accepted as screen QA evidence.** |
+| VIS-03 | iPhone 17e | [`03-iphone-17e.png`](03-iphone-17e.png) | **Machines → Add machine**, QR link call-to-action, remote URL placeholder and Pair device control. Blue **`Refreshing...`** band sits over the top of the screen. | Settle developer reload, exercise valid/invalid URL, denied/expired pairing and readback on a disposable desktop fixture. No successful pairing is evidenced by this screenshot. |
+| VIS-04 | iPad mini A17 Pro | [`04-ipad-mini.png`](04-ipad-mini.png) | App is in a **floating resizable window** with iPad dock visible, device/window chrome, **Workspace** labeled Connected to `Koryphaios · backend`, blue `Refreshing...` at top, large empty-chat state and `Open chats` button. Composer is visible near the bottom; send appears inactive with no selected chat. | Run the entire flow in this exact window and in full-screen/compact split-window; check traffic-light overlap, keyboard and safe areas. A Connected label alone provides no host-verified operation. |
+| VIS-05 | iPad Pro 13-inch M5 | [`05-ipad-pro13.png`](05-ipad-pro13.png) | Full-height dark workspace, left icon rail, backend Connected text, centered **Choose a chat to begin** and **Open chats**. The gray **Open debugger to view warnings** development overlay masks the bottom composer/action row. | Read underlying development warning, recapture after resolution, verify rail targets and navigation, composer keyboard, split view, voice navigation and the actual desktop action. |
+
+## Observations requiring diagnosis
+
+1. **VIS-D01 / dev runner:** Repeated blue `Refreshing...` strips and developer-warning banners occur while using a hot-reloading build. Their appearance is observable, but **a persistent production issue is not established**. Capture the warning cause, stabilize the binary, and compare a non-development build before assigning application defect severity.
+2. **VIS-D02 / native coverage:** These five images cover **five view states**, not the 15 route × 19 child-control interaction matrix, physical device classes, or both remote transport modes. All tap/save/remote-result evidence remains open.
+3. **VIS-D03 / windowing:** The mini is explicitly windowed and the 13-inch Pro is in a different full-height presentation. The centered empty state seems readable in both, but window resizing, keyboard occlusion, smaller accessible text and scroll interaction are not proven.
+
+## Repair and evidence capture rule
+
+For each reproduced issue record `screen + device + iOS + app build + window + host + transport + steps + expected/actual`, then fix the source, add the smallest meaningful regression, run `npm run check`, reproduce in the same native state, and independently verify desktop effects for remote mutations. Maintain separate `S/T/N/H/P` marks in [`../route-evidence-register.md`](../route-evidence-register.md). Until that loop is complete, **release remains BLOCKED**.

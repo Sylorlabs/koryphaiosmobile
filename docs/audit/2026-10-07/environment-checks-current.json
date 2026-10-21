@@ -1,0 +1,13 @@
+{
+  "recordedAt": "2026-10-07T09:56:11.286805-07:00",
+  "results": [
+    {
+      "name": "doctor-current",
+      "exit": 0
+    },
+    {
+      "name": "dependency-audit-current",
+      "exit": 1
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+Testing backend/src/kory/__tests__/manager-session-response.test.ts
+bun test v1.3.14 (d1632b29)
+[00:11:20] INFO  [server] Running pending migrations {"count":46}
+[00:11:20] INFO  [server] Applying migration {"version":"20240101_001","description":"Initial schema with users, sessions, messages, tasks"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"20240101_001"}
+[00:11:20] INFO  [server] Applying migration {"version":"20240115_001","description":"Add worker persistence tables"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"20240115_001"}
+[00:11:20] INFO  [server] Applying migration {"version":"20240201_001","description":"Add authentication and API key tables"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"20240201_001"}
+[00:11:20] INFO  [server] Applying migration {"version":"20240215_001","description":"Add user_id column to sessions table for multi-user support"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"20240215_001"}
+[00:11:20] INFO  [server] Applying migration {"version":"20240301_001","description":"Add provider credentials storage table"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"20240301_001"}
+[00:11:20] INFO  [server] Applying migration {"version":"20240315_001","description":"Add metadata and tags to sessions"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"20240315_001"}
+[00:11:20] INFO  [server] Applying migration {"version":"20240328_001","description":"Add replay events table for message replay buffer"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"20240328_001"}
+[00:11:20] INFO  [server] Applying migration {"version":"20240401_001","description":"Enable SQLite foreign key enforcement and add missing FK constraints"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"20240401_001"}
+[00:11:20] INFO  [server] Applying migration {"version":"0009","description":"Add collaboration_sessions and session_participants tables"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0009"}
+[00:11:20] INFO  [server] Applying migration {"version":"0010","description":"Add notes, note_links, and note_attachments tables"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0010"}
+[00:11:20] INFO  [server] Applying migration {"version":"0011","description":"Add working_directory to sessions (project-scoped chats)"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0011"}
+[00:11:20] INFO  [server] Applying migration {"version":"0012","description":"Add format column to notes ('markdown' | 'html')"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0012"}
+[00:11:20] INFO  [server] Applying migration {"version":"0013","description":"Persist regenerated response variants"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0013"}
+[00:11:20] INFO  [server] Applying migration {"version":"0014","description":"Notes FTS5 full-text index + title index"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0014"}
+[00:11:20] INFO  [server] Applying migration {"version":"0015","description":"Persist the assigned provider for worker tasks"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0015"}
+[00:11:20] INFO  [server] Applying migration {"version":"0016","description":"Persist Goal Mode goals and verified checklists"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0016"}
+[00:11:20] INFO  [server] Applying migration {"version":"0021","description":"Persist durable Goal Mode execution routing"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0021"}
+[00:11:20] INFO  [server] Applying migration {"version":"0020","description":"Ordered session event log with per-session cursors and causality tracking"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0020"}
+[00:11:20] INFO  [server] Applying migration {"version":"0022","description":"Add conversation_revision counter to sessions for CLI session state"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0022"}
+[00:11:20] INFO  [server] Applying migration {"version":"0023","description":"Persist revisioned session compaction checkpoints"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0023"}
+[00:11:20] INFO  [server] Applying migration {"version":"0024","description":"Backfill session message_count, tokens, and total_cost from messages"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0024"}
+[00:11:20] INFO  [server] Applying migration {"version":"0025","description":"Repair ordered event parent sequence on early durability databases"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0025"}
+[00:11:20] INFO  [server] Applying migration {"version":"0026","description":"Retain conversation lineage and separate provider transcript revisions"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0026"}
+[00:11:20] INFO  [server] Applying migration {"version":"0027","description":"Scope notes to projects and add optimistic revisions"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0027"}
+[00:11:20] INFO  [server] Applying migration {"version":"0028","description":"Persist authoritative desktop workspace navigation"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0028"}
+[00:11:20] INFO  [server] Applying migration {"version":"0029","description":"Retain unavailable workspace recovery state across restarts"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0029"}
+[00:11:20] INFO  [server] Applying migration {"version":"0030","description":"Persist API usage ledger and image history in SQLite"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0030"}
+[00:11:20] INFO  [server] Applying migration {"version":"0031","description":"Store message timestamps with millisecond precision"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0031"}
+[00:11:20] INFO  [server] Applying migration {"version":"0032","description":"Add authoritative session runs and transactional lifecycle outbox"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0032"}
+[00:11:20] INFO  [server] Applying migration {"version":"0033","description":"Bind resumable waits to durable continuations and seed every session run"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0033"}
+[00:11:20] INFO  [server] Applying migration {"version":"0034","description":"Add recoverable Notes trash and immutable revision history"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0034"}
+[00:11:20] INFO  [server] Applying migration {"version":"0036","description":"Add recoverable chat archives with active and archived indexes"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0036"}
+[00:11:20] INFO  [server] Applying migration {"version":"0037","description":"Normalize durable process ownership for session-run continuations"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0037"}
+[00:11:20] INFO  [server] Applying migration {"version":"0038","description":"Add leased restart handoffs for answered durable questions"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0038"}
+[00:11:20] INFO  [server] Applying migration {"version":"0039","description":"Add durable Notes drafts, typed property projection, and saved Bases"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0039"}
+[00:11:20] INFO  [server] Applying migration {"version":"0040","description":"Move process-supervisor schema under core migration ownership"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0040"}
+[00:11:20] INFO  [server] Applying migration {"version":"0041","description":"Add durable commit witnesses for crash-safe Notes vault restore"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0041"}
+[00:11:20] INFO  [server] Applying migration {"version":"0042","description":"Persist feed visibility tombstones and explicit client error evidence"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0042"}
+[00:11:20] INFO  [server] Applying migration {"version":"0043","description":"Add the authoritative session-turn command ledger"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0043"}
+[00:11:20] INFO  [server] Applying migration {"version":"0044","description":"Add the inter-agent message mailbox (AgentMail)"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0044"}
+[00:11:20] INFO  [server] Applying migration {"version":"0045","description":"Add app-wide checklists shared by humans and agents"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0045"}
+[00:11:20] INFO  [server] Applying migration {"version":"0046","description":"Separate durable note associations from document-derived links"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0046"}
+[00:11:20] INFO  [server] Applying migration {"version":"0047","description":"Typed evidence relationship lifecycle and durable audit snapshots"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0047"}
+[00:11:20] INFO  [server] Applying migration {"version":"0048","description":"Persistent opt-in revision-aware note semantic index"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0048"}
+[00:11:20] INFO  [server] Applying migration {"version":"0049","description":"Video generation history and wider API usage kinds"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0049"}
+[00:11:20] INFO  [server] Applying migration {"version":"0050","description":"Add optional presentation icons to notes"}
+[00:11:20] INFO  [server] Migration applied successfully {"version":"0050"}
+[00:11:20] INFO  [server] Database migrations complete {"migrationsApplied":46,"currentVersion":"20240401_001"}
+[00:11:20] INFO  [server] Process supervisor tables initialized
+[00:11:20] INFO  [server] Cleaned up old processes {"daysToKeep":7,"deleted":0}
+[00:11:20] INFO  [kory] Shutting down KoryManager
+[00:11:20] INFO  [kory] KoryManager shutdown complete
+[00:11:20] INFO  [kory] Shutting down KoryManager
+[00:11:20] INFO  [kory] KoryManager shutdown complete
+[00:11:20] INFO  [kory] Shutting down KoryManager
+[00:11:20] INFO  [kory] KoryManager shutdown complete
+[00:11:20] INFO  [kory] Shutting down KoryManager
+[00:11:20] INFO  [kory] KoryManager shutdown complete
+[00:11:21] INFO  [kory] Added worktree directory to .git/info/exclude
+[00:11:21] INFO  [kory] Added worktree directory to .git/info/exclude
+[00:11:21] INFO  [kory] Rolled back to commit {"hash":"d3edfd62b6329cf595af06810e137b04b564d377"}
+[00:11:21] INFO  [kory] Shutting down KoryManager
+[00:11:21] INFO  [kory] KoryManager shutdown complete
+[00:11:21] INFO  [kory] Shutting down KoryManager
+[00:11:21] INFO  [kory] KoryManager shutdown complete
+[00:11:21] INFO  [kory] WorkspaceManager initialized {"worktreeDir":".trees","maxConcurrent":4,"copyEnvFiles":false,"skipHooks":true,"modifyGitignore":false,"recoveredCount":0,"pendingResolutions":0,"mergeTreePreflight":true}
+[00:11:21] INFO  [kory] WorkspaceManager initialized for parallel agent isolation
+[00:11:21] INFO  [kory] Added worktree directory to .git/info/exclude
+[00:11:21] INFO  [kory] Added worktree directory to .git/info/exclude
+[00:11:21] INFO  [kory] Rolled back to commit {"hash":"3b69ed538582bb68937b9e189884a378ac5ffda1"}
+[00:11:21] INFO  [kory] Shutting down KoryManager
+[00:11:21] INFO  [kory] KoryManager shutdown complete
+[00:11:21] INFO  [kory] Shutting down KoryManager
+[00:11:21] INFO  [kory] KoryManager shutdown complete
+[00:11:21] INFO  [kory] Shutting down KoryManager
+[00:11:21] INFO  [kory] KoryManager shutdown complete
+[00:11:21] INFO  [kory] Shutting down KoryManager
+[00:11:21] INFO  [kory] KoryManager shutdown complete
+[00:11:21] INFO  [kory] WorkspaceManager initialized {"worktreeDir":".trees","maxConcurrent":4,"copyEnvFiles":false,"skipHooks":true,"modifyGitignore":false,"recoveredCount":0,"pendingResolutions":0,"mergeTreePreflight":true}
+[00:11:21] INFO  [kory] WorkspaceManager initialized for parallel agent isolation
+[00:11:21] INFO  [kory] Shutting down KoryManager
+[00:11:21] INFO  [kory] KoryManager shutdown complete
+
+backend/src/kory/__tests__/manager-session-response.test.ts:
+132 |       expect(replacement.reviewId).toBe(displayed.reviewId);
+133 |       expect(replacement.reviewRevision).not.toBe(displayed.reviewRevision);
+134 |       writeFileSync(join(repo, 'retained.txt'), 'keep this file');
+135 |       const manager = createManager(repo, sessionStore([session(durable.id, repo)]));
+136 |       try {
+137 |         await expect(manager.handleSessionResponse(durable.id, accepted, displayed)).rejects.toThrow(
+                                                                                                   ^
+error: 
+
+Expected promise that rejects
+Received promise that resolved: Promise { <resolved> }
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios/backend/src/kory/__tests__/manager-session-response.test.ts:137:94)
+(fail) KoryManager session-scoped keep/reject decisions > a stale displayed revision cannot accept a refreshed review [19.40ms]
+132 |       expect(replacement.reviewId).toBe(displayed.reviewId);
+133 |       expect(replacement.reviewRevision).not.toBe(displayed.reviewRevision);
+134 |       writeFileSync(join(repo, 'retained.txt'), 'keep this file');
+135 |       const manager = createManager(repo, sessionStore([session(durable.id, repo)]));
+136 |       try {
+137 |         await expect(manager.handleSessionResponse(durable.id, accepted, displayed)).rejects.toThrow(
+                                                                                                   ^
+error: expect(received).toThrow(expected)
+
+Expected substring: "review has changed"
+Received message: "The review project is no longer a Git repository."
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios/backend/src/kory/__tests__/manager-session-response.test.ts:137:94)
+(fail) KoryManager session-scoped keep/reject decisions > a stale displayed revision cannot reject a refreshed review [14.28ms]
+157 |       sessionId: durable.id, projectRoot: repo, changes: [],
+158 |       rollback: { kind: 'unavailable', reason: 'no rollback needed' },
+159 |     });
+160 |     const manager = createManager(repo, sessionStore([session(durable.id, repo)]));
+161 |     try {
+162 |       await expect(manager.handleSessionResponse(durable.id, true)).rejects.toThrow('review identity');
+                                                                                  ^
+error: 
+
+Expected promise that rejects
+Received promise that resolved: Promise { <resolved> }
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios/backend/src/kory/__tests__/manager-session-response.test.ts:162:77)
+(fail) KoryManager session-scoped keep/reject decisions > an identity-less decision cannot authorize the current durable review [8.10ms]
+(pass) KoryManager session-scoped keep/reject decisions > stale accept and reject responses cannot mutate an archived session [7.03ms]
+(pass) KoryManager session-scoped keep/reject decisions > rejecting session B restores only repo B and never manager-global repo A [172.90ms]
+(pass) KoryManager session-scoped keep/reject decisions > fails closed and retains review state when a session has no exact project [5.12ms]
+(pass) KoryManager session-scoped keep/reject decisions > a fresh manager rejects from the durable session-bound Git checkpoint [85.75ms]
+(pass) KoryManager session-scoped keep/reject decisions > accepts a durable review through an alias of the same physical project [10.57ms]
+(pass) KoryManager session-scoped keep/reject decisions > refuses a review bound to a different physical project [8.05ms]
+(pass) KoryManager session-scoped keep/reject decisions > refuses a review bound to a missing physical project [6.80ms]
+[00:11:21] WARN  [kory] Terminalized interrupted session change rejections after restart {"count":1}
+(pass) KoryManager session-scoped keep/reject decisions > a restarted manager terminalizes an interrupted rejection without retrying Git [65.23ms]
+
+ 8 pass
+ 3 fail
+ 41 expect() calls
+Ran 11 tests across 1 file. [1069.00ms]
+  failure log: backend/.test-logs/backend__src__kory____tests____manager-session-response.test.ts.log
+Backend files: 0 passed, 1 failed
+Slowest files: backend/src/kory/__tests__/manager-session-response.test.ts (1.1s)
+
+Backend test files failed (1):
+  - backend/src/kory/__tests__/manager-session-response.test.ts

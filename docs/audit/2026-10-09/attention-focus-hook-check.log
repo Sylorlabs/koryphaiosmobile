@@ -1,0 +1,114 @@
+
+> koryphaios-mobile@1.0.0 check
+> npm run test && npm run typecheck && npm run lint
+
+
+> koryphaios-mobile@1.0.0 test
+> bun test tests/
+
+bun test v1.3.14 (d1632b29)
+
+tests/control-provider.test.tsx:
+(pass) provider integration: isolated native-I/O cases [503.80ms]
+
+tests/composer-drafts.test.ts:
+(pass) rapid send presses synchronously acquire a single attempt [0.29ms]
+(pass) editing during model preflight preserves new content and cancels the old send [0.05ms]
+(pass) changing attachments during consent invalidates the old approval [0.05ms]
+(pass) leaving a host and returning cannot revive its old preflight [0.04ms]
+(pass) chat and project changes keep independent drafts [0.02ms]
+(pass) a model or focus lease change invalidates consent in the same chat [0.02ms]
+(pass) a send acknowledgement never clears the next draft [0.05ms]
+(pass) send failure retains original raw text/files separately from newer work [0.05ms]
+(pass) restoring a failed draft swaps and preserves the newer draft without a send [0.08ms]
+(pass) late failure stays with original host/chat after navigation [0.02ms]
+(pass) an already submitted attempt stays locked across navigation until it settles [0.02ms]
+(pass) double consent confirmation and cancellation during preference storage cannot send twice [0.03ms]
+(pass) an old cancellation cannot release the newer send lock [0.02ms]
+(pass) late file results can append only to their original draft and recheck current total size [0.09ms]
+(pass) no selected chat disables sending without dropping its draft [0.01ms]
+(pass) destination keys cannot collide when identifiers contain separators
+(pass) attachment limits also cover recovery and are rechecked before restore or send [0.08ms]
+(pass) small or invalid size metadata cannot bypass the actual encoded payload limit [2.17ms]
+(pass) disk-only recording recovery cannot be restored into a remote message [0.12ms]
+
+tests/attention-dispatch.test.tsx:
+(pass) attention dispatch: isolated provider and real transport integration [84.92ms]
+
+tests/command-lifecycle.test.ts:
+(pass) accepted mutation remains accepted when reconciliation fails, without replay [0.31ms]
+(pass) actual command failure rejects and never reconciles or retries [0.07ms]
+(pass) negative acknowledgement does not become success [0.04ms]
+(pass) local feedback precedes send; acknowledgement precedes slow state refresh [0.11ms]
+(pass) out-of-order concurrent commands retain both outcomes [0.19ms]
+(pass) older snapshots and old selections cannot overwrite newer state [0.05ms]
+(pass) disconnect invalidates outstanding host reads and commands [0.01ms]
+(pass) history bounds completed entries but preserves pending operations [0.44ms]
+
+tests/attention-responses.test.ts:
+(pass) attention submission retains text and locks until an observed host resolution [0.28ms]
+(pass) empty connection and disconnected states never acknowledge an attention response [0.04ms]
+(pass) attention failure preserves the draft and an older attempt cannot modify its manual retry [0.02ms]
+(pass) attention identity isolates hosts, chats, prompt revisions and legacy ID-less prompts [0.05ms]
+(pass) a new prompt does not inherit a pending lock or erase its unsent draft [0.03ms]
+(pass) review decisions remain locked after submission and settle only from that host and review [0.05ms]
+(pass) review identity survives transport normalization without duplicating a pending decision [0.19ms]
+(pass) fresh-client resolution settles saved work only for the matching origin and prompt [0.05ms]
+(pass) authoritative absence closes rather than confirms an unsent or submitted answer [0.04ms]
+(pass) unknown resolution status does not settle a saved response [0.02ms]
+(pass) a late identified resolution can confirm the old prompt without settling its replacement [0.04ms]
+(pass) ID-less legacy completion cannot confirm an identified response [0.05ms]
+
+tests/native-device-pairing.test.js:
+(pass) native mobile crypto interoperates with desktop keys, signatures, envelopes and verification numbers [21.08ms]
+(pass) desktop app QR pairs native mobile through the real relay, pins the host and waits for host consent [36.22ms]
+
+tests/linked-device-storage-web.test.ts:
+(pass) web pairing startup loads all three values without a missing platform export [0.08ms]
+(pass) web active-host selection can be changed and cleared within the preview session [0.04ms]
+
+tests/mobile-workspace.test.tsx:
+(pass) workspace integration: isolated component callbacks [200.65ms]
+
+tests/remote-events.test.js:
+(pass) resume replaces a stale open socket and restores the active subscription [0.41ms]
+(pass) suspension cancels retries; repeated resume/suspend does not duplicate sockets [0.10ms]
+(pass) socket errors recover even if the platform never emits close; backoff increases [0.03ms]
+(pass) the first native output chunk is bounded as well as later chunks [0.20ms]
+(pass) linked transport reports connecting until an actual host response [0.32ms]
+(pass) late linked snapshot cannot resurrect a resolved question or regress run state [0.18ms]
+(pass) linked resume reopens the session once; disposal ignores pending responses [0.09ms]
+(pass) linked answer and review failures propagate to the control provider [0.17ms]
+(pass) linked run/output and other-chat events cannot suppress pending attention snapshots [0.11ms]
+(pass) linked malformed and unknown-status events cannot hide pending attention snapshots [0.10ms]
+(pass) linked newer question survives an old snapshot while the other attention kind loads [0.06ms]
+(pass) linked newer question survives an absent snapshot while the other attention kind loads [0.03ms]
+(pass) linked resolved question stays closed while the other attention kind loads [0.06ms]
+(pass) linked newer review survives an old snapshot while the other attention kind loads [0.01ms]
+(pass) linked newer review survives an absent snapshot while the other attention kind loads
+(pass) linked resolved review stays closed while the other attention kind loads [0.03ms]
+(pass) linked unrelated events cannot suppress authoritative absence when reconnecting [0.32ms]
+(pass) linked late opens cannot overwrite attention after a chat A-B-A selection [0.10ms]
+(pass) real socket reconnect and prompt replay cannot acknowledge or erase an answer [0.27ms]
+(pass) reconnecting while another chat is active rechecks previous unanswered sessions [0.12ms]
+(pass) direct late resolutions cannot remove a replacement question or review [0.13ms]
+(pass) linked late resolutions cannot remove a replacement question or review [0.03ms]
+(pass) linked snapshot absence closes the prompt without claiming the response succeeded [0.10ms]
+(pass) replacement prompts preserve an unconfirmed response instead of marking it successful [0.05ms]
+(pass) direct unknown resolution events preserve live prompts and waiting responses [0.34ms]
+(pass) direct late host confirmation settles only the original saved prompt [0.13ms]
+(pass) linked unknown resolution events preserve live prompts and waiting responses [0.10ms]
+(pass) linked late host confirmation settles only the original saved prompt [0.05ms]
+
+ 74 pass
+ 0 fail
+ 248 expect() calls
+Ran 74 tests across 9 files. [1416.00ms]
+
+> koryphaios-mobile@1.0.0 typecheck
+> tsc --noEmit
+
+
+> koryphaios-mobile@1.0.0 lint
+> expo lint
+

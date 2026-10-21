@@ -1,0 +1,154 @@
+bun test v1.3.14 (d1632b29)
+
+tests/attention-responses.test.ts:
+(pass) attention submission retains text and locks until an observed host resolution [0.44ms]
+(pass) empty connection and disconnected states never acknowledge an attention response [0.07ms]
+(pass) attention failure preserves the draft and an older attempt cannot modify its manual retry [0.03ms]
+(pass) attention identity isolates hosts, chats, prompt revisions and legacy ID-less prompts [0.09ms]
+(pass) a new prompt does not inherit a pending lock or erase its unsent draft [0.10ms]
+(pass) review decisions remain locked after submission and settle only from that host and review [0.08ms]
+(pass) fresh-client resolution settles saved work only for the matching origin and prompt [0.04ms]
+(pass) authoritative absence closes rather than confirms an unsent or submitted answer [0.04ms]
+122 |   const store = new AttentionResponseStore();
+123 |   store.submitted(store.begin(key)!);
+124 |   store.reconcile(target, live, live, [
+125 |     { kind: 'question', sessionId: 'chat-a', promptId: 'q-a', status: 'unknown' },
+126 |   ]);
+127 |   expect(store.read(key).phase).toBe('waiting');
+                                      ^
+error: expect(received).toBe(expected)
+
+Expected: "waiting"
+Received: "closed"
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/attention-responses.test.ts:127:33)
+(fail) unknown resolution status does not settle a saved response [0.14ms]
+137 |   store.reconcile(target, live, next);
+138 |   store.setText(replacementKey, 'New answer');
+139 |   store.reconcile(target, next, next, [
+140 |     { kind: 'question', sessionId: 'chat-a', promptId: 'q-a', status: 'answered' },
+141 |   ]);
+142 |   expect(store.read(key)).toMatchObject({ phase: 'resolved', text: 'Original answer', outcome: 'answered' });
+                                ^
+error: expect(received).toMatchObject(expected)
+
+  {
+-   "outcome": "answered",
+-   "phase": "resolved",
++   "error": null,
++   "outcome": "superseded",
++   "phase": "closed",
+    "text": "Original answer",
+  }
+
+- Expected  - 2
++ Received  + 3
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/attention-responses.test.ts:142:27)
+(fail) a late identified resolution can confirm the old prompt without settling its replacement [0.11ms]
+(pass) ID-less legacy completion cannot confirm an identified response [0.03ms]
+
+tests/remote-events.test.js:
+(pass) resume replaces a stale open socket and restores the active subscription [0.91ms]
+(pass) suspension cancels retries; repeated resume/suspend does not duplicate sockets [0.10ms]
+(pass) socket errors recover even if the platform never emits close; backoff increases [0.04ms]
+(pass) the first native output chunk is bounded as well as later chunks [0.20ms]
+(pass) linked transport reports connecting until an actual host response [0.37ms]
+(pass) late linked snapshot cannot resurrect a resolved question or regress run state [0.17ms]
+(pass) linked resume reopens the session once; disposal ignores pending responses [0.10ms]
+(pass) linked answer and review failures propagate to the control provider [0.12ms]
+(pass) real socket reconnect and prompt replay cannot acknowledge or erase an answer [0.23ms]
+(pass) reconnecting while another chat is active rechecks previous unanswered sessions [0.12ms]
+(pass) direct late resolutions cannot remove a replacement question or review [0.13ms]
+(pass) linked late resolutions cannot remove a replacement question or review [0.03ms]
+(pass) linked snapshot absence closes the prompt without claiming the response succeeded [0.11ms]
+(pass) replacement prompts preserve an unconfirmed response instead of marking it successful [0.06ms]
+296 |     store.submitted(store.begin(questionKey));
+297 |     store.submitted(store.begin(reviewKey));
+298 |     for (const status of [undefined, 'unknown', 'future-status']) {
+299 |       emit({ type: 'kory.ask_user_resolved', sessionId: 'chat-a', payload: { questionId: 'q-a', status } });
+300 |       emit({ type: 'session.changes_resolved', sessionId: 'chat-a', payload: { reviewId: 'r-a', status } });
+301 |       expect(states.at(-1).questions['chat-a']?.questionId).toBe('q-a');
+                                                                  ^
+error: expect(received).toBe(expected)
+
+Expected: "q-a"
+Received: undefined
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/remote-events.test.js:301:61)
+(fail) direct unknown resolution events preserve live prompts and waiting responses [0.42ms]
+319 |     store.setText(newKey, 'Replacement answer');
+320 |     expect(store.read(oldKey).phase).toBe('closed');
+321 |     emit({ type: 'kory.ask_user_resolved', sessionId: 'chat-a', payload: { questionId: 'q-a', status: 'answered' } });
+322 |     store.submitted(attempt);
+323 |     store.failed(attempt, 'Late failure');
+324 |     expect(store.read(oldKey)).toMatchObject({ phase: 'resolved', text: 'Original answer', outcome: 'answered', error: null });
+                                     ^
+error: expect(received).toMatchObject(expected)
+
+  {
+    "error": null,
+-   "outcome": "answered",
+-   "phase": "resolved",
++   "outcome": "superseded",
++   "phase": "closed",
+    "text": "Original answer",
+  }
+
+- Expected  - 2
++ Received  + 2
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/remote-events.test.js:324:32)
+(fail) direct late host confirmation settles only the original saved prompt [0.23ms]
+296 |     store.submitted(store.begin(questionKey));
+297 |     store.submitted(store.begin(reviewKey));
+298 |     for (const status of [undefined, 'unknown', 'future-status']) {
+299 |       emit({ type: 'kory.ask_user_resolved', sessionId: 'chat-a', payload: { questionId: 'q-a', status } });
+300 |       emit({ type: 'session.changes_resolved', sessionId: 'chat-a', payload: { reviewId: 'r-a', status } });
+301 |       expect(states.at(-1).questions['chat-a']?.questionId).toBe('q-a');
+                                                                  ^
+error: expect(received).toBe(expected)
+
+Expected: "q-a"
+Received: undefined
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/remote-events.test.js:301:61)
+(fail) linked unknown resolution events preserve live prompts and waiting responses [0.08ms]
+319 |     store.setText(newKey, 'Replacement answer');
+320 |     expect(store.read(oldKey).phase).toBe('closed');
+321 |     emit({ type: 'kory.ask_user_resolved', sessionId: 'chat-a', payload: { questionId: 'q-a', status: 'answered' } });
+322 |     store.submitted(attempt);
+323 |     store.failed(attempt, 'Late failure');
+324 |     expect(store.read(oldKey)).toMatchObject({ phase: 'resolved', text: 'Original answer', outcome: 'answered', error: null });
+                                     ^
+error: expect(received).toMatchObject(expected)
+
+  {
+    "error": null,
+-   "outcome": "answered",
+-   "phase": "resolved",
++   "outcome": "superseded",
++   "phase": "closed",
+    "text": "Original answer",
+  }
+
+- Expected  - 2
++ Received  + 2
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/remote-events.test.js:324:32)
+(fail) linked late host confirmation settles only the original saved prompt [0.06ms]
+
+6 tests failed:
+(fail) unknown resolution status does not settle a saved response [0.14ms]
+(fail) a late identified resolution can confirm the old prompt without settling its replacement [0.11ms]
+(fail) direct unknown resolution events preserve live prompts and waiting responses [0.42ms]
+(fail) direct late host confirmation settles only the original saved prompt [0.23ms]
+(fail) linked unknown resolution events preserve live prompts and waiting responses [0.08ms]
+(fail) linked late host confirmation settles only the original saved prompt [0.06ms]
+
+ 23 pass
+ 6 fail
+ 77 expect() calls
+Ran 29 tests across 2 files. [564.00ms]
+
+BUN_EXIT_CODE=1

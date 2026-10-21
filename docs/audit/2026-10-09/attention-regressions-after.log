@@ -1,0 +1,44 @@
+bun test v1.3.14 (d1632b29)
+
+tests/control-provider.test.tsx:
+(pass) provider integration: isolated native-I/O cases [479.19ms]
+
+tests/attention-responses.test.ts:
+(pass) attention submission retains text and locks until an observed host resolution [0.27ms]
+(pass) empty connection and disconnected states never acknowledge an attention response [0.04ms]
+(pass) attention failure preserves the draft and an older attempt cannot modify its manual retry [0.02ms]
+(pass) attention identity isolates hosts, chats, prompt revisions and legacy ID-less prompts [0.05ms]
+(pass) a new prompt does not inherit a pending lock or erase its unsent draft [0.03ms]
+(pass) review decisions remain locked after submission and settle only from that host and review [0.04ms]
+(pass) fresh-client resolution settles saved work only for the matching origin and prompt [0.03ms]
+(pass) authoritative absence closes rather than confirms an unsent or submitted answer [0.03ms]
+(pass) unknown resolution status does not settle a saved response [0.02ms]
+(pass) a late identified resolution can confirm the old prompt without settling its replacement [0.03ms]
+(pass) ID-less legacy completion cannot confirm an identified response [0.03ms]
+
+tests/remote-events.test.js:
+(pass) resume replaces a stale open socket and restores the active subscription [0.42ms]
+(pass) suspension cancels retries; repeated resume/suspend does not duplicate sockets [0.08ms]
+(pass) socket errors recover even if the platform never emits close; backoff increases [0.03ms]
+(pass) the first native output chunk is bounded as well as later chunks [0.16ms]
+(pass) linked transport reports connecting until an actual host response [0.29ms]
+(pass) late linked snapshot cannot resurrect a resolved question or regress run state [0.14ms]
+(pass) linked resume reopens the session once; disposal ignores pending responses [0.08ms]
+(pass) linked answer and review failures propagate to the control provider [0.10ms]
+(pass) real socket reconnect and prompt replay cannot acknowledge or erase an answer [0.17ms]
+(pass) reconnecting while another chat is active rechecks previous unanswered sessions [0.09ms]
+(pass) direct late resolutions cannot remove a replacement question or review [0.12ms]
+(pass) linked late resolutions cannot remove a replacement question or review [0.04ms]
+(pass) linked snapshot absence closes the prompt without claiming the response succeeded [0.09ms]
+(pass) replacement prompts preserve an unconfirmed response instead of marking it successful [0.04ms]
+(pass) direct unknown resolution events preserve live prompts and waiting responses [0.16ms]
+(pass) direct late host confirmation settles only the original saved prompt [0.09ms]
+(pass) linked unknown resolution events preserve live prompts and waiting responses [0.04ms]
+(pass) linked late host confirmation settles only the original saved prompt [0.02ms]
+
+ 30 pass
+ 0 fail
+ 105 expect() calls
+Ran 30 tests across 3 files. [629.00ms]
+
+BUN_EXIT_CODE=0

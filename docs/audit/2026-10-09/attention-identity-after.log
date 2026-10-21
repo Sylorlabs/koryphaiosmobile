@@ -1,0 +1,23 @@
+bun test v1.3.14 (d1632b29)
+
+tests/attention-dispatch.test.tsx:
+(pass) attention dispatch: isolated provider and real transport integration [71.18ms]
+
+tests/attention-responses.test.ts:
+(pass) attention submission retains text and locks until an observed host resolution [0.26ms]
+(pass) empty connection and disconnected states never acknowledge an attention response [0.34ms]
+(pass) attention failure preserves the draft and an older attempt cannot modify its manual retry [0.05ms]
+(pass) attention identity isolates hosts, chats, prompt revisions and legacy ID-less prompts [0.07ms]
+(pass) a new prompt does not inherit a pending lock or erase its unsent draft [0.04ms]
+(pass) review decisions remain locked after submission and settle only from that host and review [0.08ms]
+(pass) review identity survives transport normalization without duplicating a pending decision [0.22ms]
+(pass) fresh-client resolution settles saved work only for the matching origin and prompt [0.05ms]
+(pass) authoritative absence closes rather than confirms an unsent or submitted answer [1.11ms]
+(pass) unknown resolution status does not settle a saved response [0.02ms]
+(pass) a late identified resolution can confirm the old prompt without settling its replacement [0.03ms]
+(pass) ID-less legacy completion cannot confirm an identified response [0.03ms]
+
+ 13 pass
+ 0 fail
+ 38 expect() calls
+Ran 13 tests across 2 files. [291.00ms]

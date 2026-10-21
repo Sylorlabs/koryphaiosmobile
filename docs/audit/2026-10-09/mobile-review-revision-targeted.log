@@ -1,0 +1,57 @@
+bun test v1.3.14 (d1632b29)
+
+tests/attention-dispatch.test.tsx:
+(pass) attention dispatch: isolated provider and real transport integration [90.84ms]
+
+tests/attention-responses.test.ts:
+(pass) attention submission retains text and locks until an observed host resolution [0.26ms]
+(pass) empty connection and disconnected states never acknowledge an attention response [0.05ms]
+(pass) attention failure preserves the draft and an older attempt cannot modify its manual retry [0.03ms]
+(pass) attention identity isolates hosts, chats, prompt revisions and legacy ID-less prompts [0.05ms]
+(pass) a new prompt does not inherit a pending lock or erase its unsent draft [0.03ms]
+(pass) review decisions remain locked after submission and settle only from that host and review [0.04ms]
+(pass) review identity survives transport normalization without duplicating a pending decision [0.09ms]
+(pass) fresh-client resolution settles saved work only for the matching origin and prompt [0.11ms]
+(pass) authoritative absence closes rather than confirms an unsent or submitted answer [0.18ms]
+(pass) unknown resolution status does not settle a saved response [0.05ms]
+(pass) a late identified resolution can confirm the old prompt without settling its replacement [0.09ms]
+(pass) ID-less legacy completion cannot confirm an identified response [0.06ms]
+(pass) identical review republications have independent locks and revision-scoped confirmation [0.08ms]
+(pass) fresh-client review confirmation is revision scoped and malformed retained keys are ignored [0.36ms]
+
+tests/remote-events.test.js:
+(pass) resume replaces a stale open socket and restores the active subscription [0.39ms]
+(pass) suspension cancels retries; repeated resume/suspend does not duplicate sockets [0.09ms]
+(pass) socket errors recover even if the platform never emits close; backoff increases [0.03ms]
+(pass) the first native output chunk is bounded as well as later chunks [0.23ms]
+(pass) linked transport reports connecting until an actual host response [0.39ms]
+(pass) late linked snapshot cannot resurrect a resolved question or regress run state [0.22ms]
+(pass) linked resume reopens the session once; disposal ignores pending responses [0.10ms]
+(pass) linked answer and review failures propagate to the control provider [0.21ms]
+(pass) direct sends the displayed revision and ignores stale or malformed review acknowledgments [0.24ms]
+(pass) linked sends the displayed revision and ignores stale or malformed review acknowledgments [0.05ms]
+(pass) linked run/output and other-chat events cannot suppress pending attention snapshots [0.17ms]
+(pass) linked malformed and unknown-status events cannot hide pending attention snapshots [0.18ms]
+(pass) linked newer question survives an old snapshot while the other attention kind loads [0.07ms]
+(pass) linked newer question survives an absent snapshot while the other attention kind loads [0.02ms]
+(pass) linked resolved question stays closed while the other attention kind loads [0.08ms]
+(pass) linked newer review survives an old snapshot while the other attention kind loads [0.01ms]
+(pass) linked newer review survives an absent snapshot while the other attention kind loads
+(pass) linked resolved review stays closed while the other attention kind loads
+(pass) linked unrelated events cannot suppress authoritative absence when reconnecting [0.25ms]
+(pass) linked late opens cannot overwrite attention after a chat A-B-A selection [0.09ms]
+(pass) real socket reconnect and prompt replay cannot acknowledge or erase an answer [0.19ms]
+(pass) reconnecting while another chat is active rechecks previous unanswered sessions [0.12ms]
+(pass) direct late resolutions cannot remove a replacement question or review [0.14ms]
+(pass) linked late resolutions cannot remove a replacement question or review [0.03ms]
+(pass) linked snapshot absence closes the prompt without claiming the response succeeded [0.07ms]
+(pass) replacement prompts preserve an unconfirmed response instead of marking it successful [0.12ms]
+(pass) direct unknown resolution events preserve live prompts and waiting responses [0.23ms]
+(pass) direct late host confirmation settles only the original saved prompt [0.10ms]
+(pass) linked unknown resolution events preserve live prompts and waiting responses [0.07ms]
+(pass) linked late host confirmation settles only the original saved prompt [0.02ms]
+
+ 45 pass
+ 0 fail
+ 173 expect() calls
+Ran 45 tests across 3 files. [414.00ms]

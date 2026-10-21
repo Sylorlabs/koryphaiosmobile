@@ -1,0 +1,47 @@
+bun test v1.3.14 (d1632b29)
+
+tests/attention-dispatch.test.tsx:
+12 |     const child = spawnSync(process.execPath, ['test', import.meta.path], {
+13 |       env: { ...process.env, KORYPHAIOS_ATTENTION_DISPATCH_TEST_CHILD: '1' },
+14 |       encoding: 'utf8', timeout: 30_000,
+15 |     });
+16 |     if (child.error || child.status !== 0) {
+17 |       throw new Error(child.error?.message ?? `Attention dispatch tests failed (${child.status}):\n${child.stdout}\n${child.stderr}`);
+                                                                                                                                         ^
+error: Attention dispatch tests failed (1):
+
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/attention-dispatch.test.tsx:17:133)
+(fail) attention dispatch: isolated provider and real transport integration [132.88ms]
+
+tests/attention-responses.test.ts:
+(pass) attention submission retains text and locks until an observed host resolution [0.29ms]
+(pass) empty connection and disconnected states never acknowledge an attention response [0.50ms]
+(pass) attention failure preserves the draft and an older attempt cannot modify its manual retry [0.05ms]
+(pass) attention identity isolates hosts, chats, prompt revisions and legacy ID-less prompts [0.07ms]
+(pass) a new prompt does not inherit a pending lock or erase its unsent draft [0.03ms]
+(pass) review decisions remain locked after submission and settle only from that host and review [0.15ms]
+ 95 |     changes: [{ path: 'a.txt', operation: 'edit', linesAdded: 1, linesDeleted: 0 }],
+ 96 |   };
+ 97 |   const parsed = asReview(review.sessionId, review)!;
+ 98 |   const reviewKey = attentionResponseKey(target, 'review', review);
+ 99 |   const parsedKey = attentionResponseKey(target, 'review', parsed);
+100 |   expect(parsedKey).toBe(reviewKey);
+                          ^
+error: expect(received).toBe(expected)
+
+Expected: "["https://audit.test","host-a","review","chat-a",["r-a",[{"path":"a.txt","operation":"edit","linesAdded":1,"linesDeleted":0}]]]"
+Received: "["https://audit.test","host-a","review","chat-a",["r-a",[{"path":"a.txt","linesAdded":1,"linesDeleted":0,"operation":"edit"}]]]"
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/attention-responses.test.ts:100:21)
+(fail) review identity survives transport normalization without duplicating a pending decision [0.51ms]
+(pass) fresh-client resolution settles saved work only for the matching origin and prompt [0.06ms]
+(pass) authoritative absence closes rather than confirms an unsent or submitted answer [0.04ms]
+(pass) unknown resolution status does not settle a saved response [0.02ms]
+(pass) a late identified resolution can confirm the old prompt without settling its replacement [0.04ms]
+(pass) ID-less legacy completion cannot confirm an identified response [0.17ms]
+
+ 11 pass
+ 2 fail
+ 35 expect() calls
+Ran 13 tests across 2 files. [546.00ms]

@@ -1,0 +1,77 @@
+bun test v1.3.14 (d1632b29)
+
+tests/control-provider.test.tsx:
+(pass) provider integration: isolated native-I/O cases [800.85ms]
+
+tests/attention-responses.test.ts:
+(pass) attention submission retains text and locks until an observed host resolution [2.35ms]
+(pass) empty connection and disconnected states never acknowledge an attention response [0.17ms]
+(pass) attention failure preserves the draft and an older attempt cannot modify its manual retry [0.08ms]
+(pass) attention identity isolates hosts, chats, prompt revisions and legacy ID-less prompts [0.17ms]
+(pass) a new prompt does not inherit a pending lock or erase its unsent draft [0.09ms]
+(pass) review decisions remain locked after submission and settle only from that host and review [0.15ms]
+(pass) fresh-client resolution settles saved work only for the matching origin and prompt [0.06ms]
+(pass) authoritative absence closes rather than confirms an unsent or submitted answer [0.38ms]
+122 |   const store = new AttentionResponseStore();
+123 |   store.submitted(store.begin(key)!);
+124 |   store.reconcile(target, live, live, [
+125 |     { kind: 'question', sessionId: 'chat-a', promptId: 'q-a', status: 'unknown' },
+126 |   ]);
+127 |   expect(store.read(key).phase).toBe('waiting');
+                                      ^
+error: expect(received).toBe(expected)
+
+Expected: "waiting"
+Received: "closed"
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/attention-responses.test.ts:127:33)
+(fail) unknown resolution status does not settle a saved response [1.86ms]
+137 |   store.reconcile(target, live, next);
+138 |   store.setText(replacementKey, 'New answer');
+139 |   store.reconcile(target, next, next, [
+140 |     { kind: 'question', sessionId: 'chat-a', promptId: 'q-a', status: 'answered' },
+141 |   ]);
+142 |   expect(store.read(key)).toMatchObject({ phase: 'resolved', text: 'Original answer', outcome: 'answered' });
+                                ^
+error: expect(received).toMatchObject(expected)
+
+  {
+-   "outcome": "answered",
+-   "phase": "resolved",
++   "error": null,
++   "outcome": "superseded",
++   "phase": "closed",
+    "text": "Original answer",
+  }
+
+- Expected  - 2
++ Received  + 3
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/attention-responses.test.ts:142:27)
+(fail) a late identified resolution can confirm the old prompt without settling its replacement [0.99ms]
+(pass) ID-less legacy completion cannot confirm an identified response [0.09ms]
+
+tests/remote-events.test.js:
+(pass) resume replaces a stale open socket and restores the active subscription [11.27ms]
+(pass) suspension cancels retries; repeated resume/suspend does not duplicate sockets [0.83ms]
+(pass) socket errors recover even if the platform never emits close; backoff increases [0.23ms]
+(pass) the first native output chunk is bounded as well as later chunks [4.32ms]
+(pass) linked transport reports connecting until an actual host response [5.04ms]
+(pass) late linked snapshot cannot resurrect a resolved question or regress run state [0.53ms]
+(pass) linked resume reopens the session once; disposal ignores pending responses [0.69ms]
+(pass) linked answer and review failures propagate to the control provider [1.06ms]
+(pass) real socket reconnect and prompt replay cannot acknowledge or erase an answer [3.00ms]
+(pass) reconnecting while another chat is active rechecks previous unanswered sessions [0.28ms]
+(pass) direct late resolutions cannot remove a replacement question or review [1.02ms]
+(pass) linked late resolutions cannot remove a replacement question or review [0.10ms]
+(pass) linked snapshot absence closes the prompt without claiming the response succeeded [1.74ms]
+(pass) replacement prompts preserve an unconfirmed response instead of marking it successful [0.87ms]
+
+2 tests failed:
+(fail) unknown resolution status does not settle a saved response [1.86ms]
+(fail) a late identified resolution can confirm the old prompt without settling its replacement [0.99ms]
+
+ 24 pass
+ 2 fail
+ 72 expect() calls
+Ran 26 tests across 3 files. [1.70s]

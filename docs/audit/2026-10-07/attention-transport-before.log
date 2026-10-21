@@ -1,0 +1,129 @@
+bun test v1.3.14 (d1632b29)
+
+tests/remote-events.test.js:
+(pass) resume replaces a stale open socket and restores the active subscription [6.74ms]
+(pass) suspension cancels retries; repeated resume/suspend does not duplicate sockets [0.70ms]
+(pass) socket errors recover even if the platform never emits close; backoff increases [0.08ms]
+(pass) the first native output chunk is bounded as well as later chunks [0.38ms]
+(pass) linked transport reports connecting until an actual host response [0.79ms]
+(pass) late linked snapshot cannot resurrect a resolved question or regress run state [0.31ms]
+(pass) linked resume reopens the session once; disposal ignores pending responses [0.28ms]
+(pass) linked answer and review failures propagate to the control provider [0.53ms]
+191 |   client.answerQuestion('chat-a', 'Go');
+192 |   store.submitted(attempt);
+193 |   instances[0].close();
+194 |   timers[0].callback();
+195 |   instances[1].open();
+196 |   expect(store.read(key)).toMatchObject({ text: 'Keep this exact answer', phase: 'waiting' });
+                                ^
+error: expect(received).toMatchObject(expected)
+
+  {
+-   "phase": "waiting",
+-   "text": "Keep this exact answer",
++   "error": null,
++   "phase": "resolved",
++   "text": "",
+  }
+
+- Expected  - 2
++ Received  + 3
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/remote-events.test.js:196:27)
+(fail) real socket reconnect and prompt replay cannot acknowledge or erase an answer [2.51ms]
+210 |   const key = attentionResponseKey(target, 'question', prompt);
+211 |   store.submitted(store.begin(key));
+212 |   client.setActiveSession('chat-b');
+213 |   client.resume();
+214 |   instances[1].open();
+215 |   expect(instances[1].sent.filter((message) => message.type === 'subscribe_session').map((message) => message.sessionId).sort()).toEqual(['chat-a', 'chat-b']);
+                                                                                                                                       ^
+error: expect(received).toEqual(expected)
+
+  [
+-   "chat-a",
+    "chat-b",
+  ]
+
+- Expected  - 1
++ Received  + 0
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/remote-events.test.js:215:130)
+(fail) reconnecting while another chat is active rechecks previous unanswered sessions [1.24ms]
+236 |     }
+237 |     emit({ type: 'kory.ask_user', sessionId: 'chat-a', payload: newerQuestion });
+238 |     emit({ type: 'session.changes', sessionId: 'chat-a', payload: newerReview });
+239 |     emit({ type: 'kory.ask_user_resolved', sessionId: 'chat-a', payload: { questionId: 'q-a', status: 'answered' } });
+240 |     emit({ type: 'session.changes_resolved', sessionId: 'chat-a', payload: { reviewId: 'r-a', status: 'accepted' } });
+241 |     expect(states.at(-1).questions['chat-a']?.questionId).toBe('q-b');
+                                                                ^
+error: expect(received).toBe(expected)
+
+Expected: "q-b"
+Received: undefined
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/remote-events.test.js:241:59)
+(fail) direct late resolutions cannot remove a replacement question or review [0.85ms]
+236 |     }
+237 |     emit({ type: 'kory.ask_user', sessionId: 'chat-a', payload: newerQuestion });
+238 |     emit({ type: 'session.changes', sessionId: 'chat-a', payload: newerReview });
+239 |     emit({ type: 'kory.ask_user_resolved', sessionId: 'chat-a', payload: { questionId: 'q-a', status: 'answered' } });
+240 |     emit({ type: 'session.changes_resolved', sessionId: 'chat-a', payload: { reviewId: 'r-a', status: 'accepted' } });
+241 |     expect(states.at(-1).questions['chat-a']?.questionId).toBe('q-b');
+                                                                ^
+error: expect(received).toBe(expected)
+
+Expected: "q-b"
+Received: undefined
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/remote-events.test.js:241:59)
+(fail) linked late resolutions cannot remove a replacement question or review [1.36ms]
+253 |   const key = attentionResponseKey(target, 'question', prompt);
+254 |   store.setText(key, 'Recover this answer');
+255 |   store.submitted(store.begin(key));
+256 |   client.resume();
+257 |   await flush();
+258 |   expect(store.read(key)).toMatchObject({ phase: 'closed', text: 'Recover this answer' });
+                                ^
+error: expect(received).toMatchObject(expected)
+
+  {
+-   "phase": "closed",
+-   "text": "Recover this answer",
++   "error": null,
++   "phase": "resolved",
++   "text": "",
+  }
+
+- Expected  - 2
++ Received  + 3
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/remote-events.test.js:258:27)
+(fail) linked snapshot absence closes the prompt without claiming the response succeeded [0.89ms]
+266 |   instances[0].message({ type: 'kory.ask_user', sessionId: 'chat-a', payload: prompt });
+267 |   const key = attentionResponseKey(target, 'question', prompt);
+268 |   store.setText(key, 'Unconfirmed answer');
+269 |   store.submitted(store.begin(key));
+270 |   instances[0].message({ type: 'kory.ask_user', sessionId: 'chat-a', payload: { ...prompt, questionId: 'q-b' } });
+271 |   expect(store.read(key)).toMatchObject({ phase: 'closed', text: 'Unconfirmed answer' });
+                                ^
+error: expect(received).toMatchObject(expected)
+
+  {
+-   "phase": "closed",
+-   "text": "Unconfirmed answer",
++   "error": null,
++   "phase": "resolved",
++   "text": "",
+  }
+
+- Expected  - 2
++ Received  + 3
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/remote-events.test.js:271:27)
+(fail) replacement prompts preserve an unconfirmed response instead of marking it successful [0.27ms]
+
+ 8 pass
+ 6 fail
+ 32 expect() calls
+Ran 14 tests across 1 file. [1426.00ms]

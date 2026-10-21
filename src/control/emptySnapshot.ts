@@ -1,0 +1,43 @@
+import type { ControlSnapshot } from '../types/control';
+
+export const EMPTY_SNAPSHOT: ControlSnapshot = {
+  version: 1,
+  machine: {
+    id: 'unpaired',
+    name: 'Pair a machine',
+    platform: 'Remote host',
+    status: 'offline',
+    executionLabel: 'Remote execution',
+  },
+  projects: [],
+  activeProjectId: '',
+  sessions: [],
+  activeSessionId: '',
+  agents: [],
+  feed: [],
+  activity: [],
+  goals: [],
+  checklists: [],
+  git: {
+    isRepo: false,
+    writeReady: false,
+    status: [],
+    branch: '',
+    ahead: 0,
+    behind: 0,
+    remote: null,
+    conflicts: [],
+    branches: [],
+    worktrees: {
+      active: [],
+      availableSlots: 0,
+      maxAllowed: 0,
+      pendingResolutions: [],
+    },
+  },
+  settingsSections: [],
+  settings: [],
+  modelCatalog: [],
+  context: { used: 0, limit: 0, cached: 0, archive: [] },
+  capabilities: [],
+};

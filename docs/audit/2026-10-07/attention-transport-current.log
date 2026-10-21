@@ -1,0 +1,56 @@
+bun test v1.3.14 (d1632b29)
+
+tests/attention-responses.test.ts:
+15 |   expect(store.begin(key)).toBeNull();
+16 |   store.submitted(attempt);
+17 |   expect(store.read(key).text).toBe('  Keep my exact answer  ');
+18 |   expect(store.begin(key)).toBeNull();
+19 |   store.reconcile(target, live, { ...live, questions: {} });
+20 |   expect(store.read(key).phase).toBe('resolved');
+                                     ^
+error: expect(received).toBe(expected)
+
+Expected: "resolved"
+Received: "waiting"
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/attention-responses.test.ts:20:33)
+(fail) attention submission retains text and locks until an observed host resolution [2.78ms]
+(pass) empty connection and disconnected states never acknowledge an attention response [0.15ms]
+(pass) attention failure preserves the draft and an older attempt cannot modify its manual retry [0.15ms]
+(pass) attention identity isolates hosts, chats, prompt revisions and legacy ID-less prompts [0.31ms]
+(pass) a new prompt does not inherit a pending lock or erase its unsent draft [0.12ms]
+80 |   const withReview = { ...live, reviews: { 'chat-a': review } };
+81 |   store.submitted(store.begin(reviewKey)!);
+82 |   store.reconcile({ ...target, machineId: 'host-b' }, withReview, live);
+83 |   expect(store.read(reviewKey).phase).toBe('waiting');
+84 |   store.reconcile(target, withReview, live);
+85 |   expect(store.read(reviewKey).phase).toBe('resolved');
+                                           ^
+error: expect(received).toBe(expected)
+
+Expected: "resolved"
+Received: "waiting"
+
+      at <anonymous> (/Users/Shared/micah/Documents/koryphaios-mobile/tests/attention-responses.test.ts:85:39)
+(fail) review decisions remain locked after submission and settle only from that host and review [0.26ms]
+
+tests/remote-events.test.js:
+(pass) resume replaces a stale open socket and restores the active subscription [4.65ms]
+(pass) suspension cancels retries; repeated resume/suspend does not duplicate sockets [0.22ms]
+(pass) socket errors recover even if the platform never emits close; backoff increases [0.07ms]
+(pass) the first native output chunk is bounded as well as later chunks [0.42ms]
+(pass) linked transport reports connecting until an actual host response [0.71ms]
+(pass) late linked snapshot cannot resurrect a resolved question or regress run state [0.60ms]
+(pass) linked resume reopens the session once; disposal ignores pending responses [0.45ms]
+(pass) linked answer and review failures propagate to the control provider [0.29ms]
+(pass) real socket reconnect and prompt replay cannot acknowledge or erase an answer [0.72ms]
+(pass) reconnecting while another chat is active rechecks previous unanswered sessions [0.50ms]
+(pass) direct late resolutions cannot remove a replacement question or review [0.85ms]
+(pass) linked late resolutions cannot remove a replacement question or review [0.24ms]
+(pass) linked snapshot absence closes the prompt without claiming the response succeeded [0.80ms]
+(pass) replacement prompts preserve an unconfirmed response instead of marking it successful [0.33ms]
+
+ 18 pass
+ 2 fail
+ 58 expect() calls
+Ran 20 tests across 2 files. [547.00ms]

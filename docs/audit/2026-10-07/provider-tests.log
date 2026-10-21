@@ -1,0 +1,22 @@
+bun test v1.3.14 (d1632b29)
+
+tests/control-provider.test.tsx:
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) Strict Mode replay leaves the current host usable and one event client alive [39.23ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) a non-selection command finishing after a chat switch cannot reopen the old chat [37.90ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) an explicitly targeted send from no-chat state does not supersede pending chat navigation [39.51ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) refresh after a command starts does not reuse an invalidated poll [38.43ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) an old host snapshot cannot populate the newly selected host [38.39ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) background, inactive, active restores transport and refreshes state [39.20ms]
+react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer
+(pass) accepted mutation with failed reconciliation remains accepted and is not replayed [35.76ms]
+
+ 7 pass
+ 0 fail
+ 29 expect() calls
+Ran 7 tests across 1 file. [752.00ms]

@@ -1,0 +1,142 @@
+command,mobile_adapter_line,mobile_ui_provider_literal_refs,mobile_test_literal_refs,desktop_ui_literal_refs,desktop_backend_shared_literal_refs,adapter_api_path_literals_UNVERIFIED,adapter_http_method_literals_UNVERIFIED,direct_native,linked_native,desktop_effect,physical_device
+session.select,1743,src/components/MobileChatsView.tsx; src/components/WorkspaceView.tsx; src/control/ControlProvider.tsx,tests/chats-safety.test.tsx; tests/command-lifecycle.test.ts; tests/control-provider.test.tsx; tests/mobile-workspace.test.tsx,,,,,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+session.create,1746,src/components/HostFolderPicker.tsx; src/components/MobileChatsView.tsx; src/components/MobileControlHub.tsx; src/components/WorkspaceControls.tsx; src/components/WorkspaceNavigationView.tsx; src/components/WorkspaceView.tsx,tests/command-lifecycle.test.ts; tests/mobile-workspace.test.tsx; tests/workspace-navigation-safety.test.tsx,,,/api/sessions/,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+project.select,1758,src/components/HostFolderPicker.tsx; src/components/MobileChatsView.tsx; src/components/WorkspaceNavigationView.tsx; src/components/WorkspaceView.tsx; src/control/ControlProvider.tsx,tests/workspace-navigation-safety.test.tsx,,,/api/workspace/select,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+workspace.open,1769,src/components/HostFolderPicker.tsx; src/components/WorkspaceNavigationView.tsx,,,,/api/workspace/open,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+workspace.directory.create,1779,src/components/HostFolderPicker.tsx,,,,/api/workspace/directories,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+workspace.deselect,1793,src/components/WorkspaceNavigationView.tsx,,,,/api/workspace/deselect,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+workspace.acknowledge_unavailable,1801,src/components/WorkspaceNavigationView.tsx,,,,/api/workspace/acknowledge-unavailable,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+workspace.clear,1809,src/components/WorkspaceNavigationView.tsx,,,,/api/workspace/state,DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+device.rename,1817,src/components/MachinesView.tsx,tests/machines-view.test.tsx,,,/api/devices/name,PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+device.invite,1827,src/components/MachinesView.tsx,tests/machines-view.test.tsx,,,/api/devices/pairing,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+device.stop_invite,1834,src/components/MachinesView.tsx,tests/machines-view.test.tsx; tests/remote-client.test.ts,,,/api/devices/pairing,DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+device.pair,1839,src/components/MachinesView.tsx,,,,/api/devices/pair,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+device.decide,1849,src/components/MachinesView.tsx,,,,/api/devices/decision,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+device.unlink,1859,src/components/MachinesView.tsx,tests/machines-view.test.tsx,,,/api/devices/${encodeURIComponent(deviceId)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+device.grants,1866,src/components/MachinesView.tsx,tests/machines-view.test.tsx,,,/api/devices/${encodeURIComponent(deviceId)}/grants,PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+session.send_message,1882,src/components/AdvancedControls.tsx; src/components/MobileWorkspaceView.tsx; src/components/WorkspaceControls.tsx,tests/advanced-controls-safety.test.tsx; tests/control-provider.test.tsx,,,/api/messages/,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+voice.transcribe,1925,src/components/MobileWorkspaceView.tsx,tests/mobile-workspace.test.tsx,,,/api/voice/transcribe,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+voice.synthesize,1946,src/components/MobileWorkspaceView.tsx; src/components/VoicePreviewControl.tsx,tests/mobile-workspace.test.tsx; tests/voice-preview-ui-safety.test.tsx,,,/api/voice/synthesize,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+session.rename,1971,src/components/AdvancedControls.tsx,tests/remote-client.test.ts,,,/api/sessions/${encodeURIComponent(targetSessionId)},PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+session.archive,1982,,,,,/api/sessions/${encodeURIComponent(targetSessionId)}/archive,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+session.delete,1991,,,,,/api/sessions/${encodeURIComponent(targetSessionId)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+session.delete_all,2000,src/components/MobileChatsView.tsx,tests/chats-safety.test.tsx; tests/mobile-workspace.test.tsx,,,/api/sessions,DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+session.update_controls,2009,src/components/AdvancedControls.tsx,tests/advanced-controls-safety.test.tsx,,,/api/sessions/${encodeURIComponent(targetSessionId)},PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+session.compact,2027,src/components/AdvancedControls.tsx,,,,/api/sessions/${encodeURIComponent(targetSessionId)}/compact,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+context.visibility,2043,src/components/MobileContextPopover.tsx,tests/context-popover-safety.test.tsx,,,/api/sessions/${encodeURIComponent(targetSessionId)}/context/${encodeURIComponent(archiveId)}/visibility,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+response_style.save,2057,src/components/AgentControlViews.tsx,,,,/api/agent/response-style,PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+response_style.reset,2070,src/components/AgentControlViews.tsx,,,,/api/agent/response-style/reset,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+agent.settings.reset,2078,,,,,/api/agent/settings/reset,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+agent.preferences.save,2084,src/components/AgentControlViews.tsx,,,,/api/agent/preferences,PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+agent.preferences.init,2097,src/components/AgentControlViews.tsx,,,,/api/agent/preferences/init,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+skill.create,2105,src/components/AgentControlViews.tsx,,,,/api/agent/skills,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+skill.save_draft,2147,src/components/AgentControlViews.tsx,,,,/api/agent/skills/${encodeURIComponent(name)}/draft,PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+skill.test,2183,src/components/AgentControlViews.tsx,,,,/api/agent/skills/${encodeURIComponent(name)}/test,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+skill.activate,2201,src/components/AgentControlViews.tsx,,,,/api/agent/skills/${encodeURIComponent(name)}/activate,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+skill.update_default,2223,src/components/AgentControlViews.tsx,,,,/api/agent/skills/${encodeURIComponent(name)}/update-default,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+skill.convert,2247,src/components/AgentControlViews.tsx,,,,/api/agent/skills/${encodeURIComponent(name)}/convert,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+message.delete,2284,src/components/MobileWorkspaceView.tsx,,,,/api/messages/${encodeURIComponent(targetSessionId)}/${encodeURIComponent(messageId)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+message.visibility,2295,src/components/MobileWorkspaceView.tsx,tests/mobile-workspace.test.tsx,,,/api/sessions/${encodeURIComponent(targetSessionId)}/feed/visibility,PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+message.regenerate,2313,src/components/MobileWorkspaceView.tsx,tests/mobile-workspace.test.tsx,,,/api/messages/regenerate,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+message.select_variant,2335,src/components/MobileWorkspaceView.tsx,tests/mobile-workspace.test.tsx,,,/api/messages/variant,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+native_command.run,2358,src/components/NativeCommandsView.tsx,tests/native-command-ui-safety.test.tsx,,,/api/native-commands/run,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+workflow.start,2375,src/components/AdvancedControls.tsx,,,,/api/agent/workflows/start,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+workflow.advance,2392,src/components/AdvancedControls.tsx,tests/advanced-controls-safety.test.tsx,,,/api/agent/workflows/${encodeURIComponent(runId)}/advance,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+workflow.stop,2404,src/components/AdvancedControls.tsx,,,,/api/agent/workflows/${encodeURIComponent(runId)}/stop,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+workflow.activate_draft,2414,src/components/AdvancedControls.tsx,,,,/api/agent/workflows/drafts/${encodeURIComponent(draftId)}/activate,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+memory.save,2429,src/components/RemoteContentControls.tsx,,,,/api/memory/documents/${documentKind}/${encodeURIComponent(name)}; /api/memory/project; /api/memory/rules; /api/memory/sessions/${encodeURIComponent(targetSessionId)}; /api/memory/universal,PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+memory.init,2460,src/components/RemoteContentControls.tsx,,,,/api/memory/project/init; /api/memory/rules/init; /api/memory/sessions/${encodeURIComponent(targetSessionId)}/init; /api/memory/universal/init,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+memory.create_document,2480,src/components/RemoteContentControls.tsx,,,,/api/memory/documents,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+memory.delete_session,2492,,,,,/api/memory/sessions/${encodeURIComponent(targetSessionId)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+note.create,2502,src/components/NotesCanvasControlView.tsx; src/components/NotesControlView.tsx,tests/notes-control-ui-safety.test.tsx,,,/api/notes/,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+note.update,2521,src/components/NotesCanvasControlView.tsx; src/components/NotesControlView.tsx,tests/control-provider.test.tsx; tests/notes-control-ui-safety.test.tsx,,,/api/notes/${encodeURIComponent(noteId)},PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+note.delete,2549,src/components/NotesControlView.tsx,tests/remote-client.test.ts,,,/api/notes/${encodeURIComponent(noteId)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+note.restore,2563,src/components/NotesControlView.tsx,,,,/api/notes/${encodeURIComponent(noteId)}/restore,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+note.restore_revision,2580,src/components/NotesControlView.tsx,,,,/api/notes/${encodeURIComponent(noteId)}/revisions/${revision}/restore,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.base_create,2604,src/components/NotesControlView.tsx,,,,/api/notes/bases,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.base_update,2619,src/components/NotesControlView.tsx,,,,/api/notes/bases/${encodeURIComponent(baseId)},PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.base_delete,2641,src/components/NotesControlView.tsx,,,,/api/notes/bases/${encodeURIComponent(baseId)}?expectedRevision=${expectedRevision},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.base_restore,2654,src/components/NotesControlView.tsx,,,,/api/notes/bases/${encodeURIComponent(baseId)}/restore,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.draft_discard,2671,src/components/NotesControlView.tsx,tests/notes-control-ui-safety.test.tsx,,,/api/notes/drafts/${encodeURIComponent(draftId)}/discard,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.import_memory,2685,src/components/NotesControlView.tsx,,,,/api/notes/import-memory,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.import_file,2693,src/components/NotesControlView.tsx,tests/remote-client.test.ts,,,/api/notes/import-file,,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.vault_preview,2707,src/components/NotesControlView.tsx,,,,/api/notes/import-vault/preview,,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.vault_restore,2721,src/components/NotesControlView.tsx,,,,/api/notes/import-vault/restore,,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+note.attachment_add,2739,src/components/NotesControlView.tsx,,,,/api/notes/${encodeURIComponent(noteId)}/attachments,,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+note.attachment_remove,2754,src/components/NotesControlView.tsx,,,,/api/notes/${encodeURIComponent(noteId)}/attachments/${encodeURIComponent(attachmentId)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.chat_finding,2765,src/components/MobileWorkspaceView.tsx,tests/mobile-workspace.test.tsx,,,/api/notes/chat-findings,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.relationship_create,2786,src/components/NotesControlView.tsx,tests/remote-client.test.ts,,,/api/notes/relationships,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.relationship_review,2824,src/components/NotesControlView.tsx; src/components/NotesNetworkControlView.tsx,tests/notes-control-ui-safety.test.tsx,,,/api/notes/relationships/${encodeURIComponent(fromId)}/${encodeURIComponent(toId)},PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.relationship_remove,2843,src/components/NotesNetworkControlView.tsx,,,,/api/notes/relationships/${encodeURIComponent(fromId)}/${encodeURIComponent(toId)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.relationship_refresh,2866,src/components/NotesNetworkControlView.tsx,,,,/api/notes/relationships/${encodeURIComponent(fromId)}/${encodeURIComponent(toId)}/refresh,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.properties_patch,2906,src/components/NotesControlView.tsx,,,,/api/notes/${encodeURIComponent(noteId)}/properties,PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.properties_reindex,2926,src/components/NotesControlView.tsx,,,,/api/notes/properties/reindex,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.semantic_index_rebuild,2934,src/components/NotesNetworkControlView.tsx,,,,/api/notes/semantic-index/rebuild,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+notes.sync,2952,src/components/NotesControlView.tsx,,,,/api/notes/sync-project,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+collab.start,2960,src/components/RemoteContentControls.tsx,,,,/api/collab/host/start,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+collab.end,2977,src/components/RemoteContentControls.tsx,,,,/api/collab/${encodeURIComponent(hostId)}/end,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+collab.policy,2987,src/components/RemoteContentControls.tsx,,,,/api/collab/${encodeURIComponent(hostId)}/policy,PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+collab.prompt_decision,3003,src/components/RemoteContentControls.tsx,,,,/api/collab/${encodeURIComponent(hostId)}/approve,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+collab.join_decision,3019,src/components/RemoteContentControls.tsx,,,,/api/collab/${encodeURIComponent(hostId)}/join-decision,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+collab.assign_tier,3038,src/components/RemoteContentControls.tsx,,,,/api/collab/${encodeURIComponent(hostId)}/assign-tier,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+collab.invite,3051,src/components/RemoteContentControls.tsx,,,,/api/collab/${encodeURIComponent(hostId)}/invite,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+collab.join,3066,src/components/RemoteContentControls.tsx,,,,/api/collab/join,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+model_sharing.save,3088,src/components/ModelSharingControlView.tsx,,,,/api/collab/providers/shared,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+model_sharing.start,3102,src/components/ModelSharingControlView.tsx,,,,/api/collab/providers/sharing/start,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+model_sharing.stop,3115,src/components/ModelSharingControlView.tsx,,,,/api/collab/providers/sharing/stop,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+model_sharing.connect,3123,src/components/ModelSharingControlView.tsx,,,,/api/collab/providers/connect,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+model_sharing.disconnect,3141,src/components/ModelSharingControlView.tsx,,,,/api/collab/providers/disconnect,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+model_sharing.sandbox,3149,src/components/ModelSharingControlView.tsx,,,,/api/collab/providers/sandbox,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+mcp.save,3163,src/components/McpControlView.tsx,tests/mcp-command-arguments.test.tsx,,,/api/v1/mcp-servers; /api/v1/mcp-servers/${encodeURIComponent(currentName)},,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+mcp.test,3188,,,,,,,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+mcp.reload,3189,,,,,,,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+mcp.remove,3190,,,,,/api/v1/mcp-servers/${encodeURIComponent(serverName)},DELETE; POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+mcp.oauth_start,3209,src/components/McpControlView.tsx,,,,/api/v1/mcp-servers/${encodeURIComponent(serverName)}/oauth/start,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+mcp.oauth_complete,3238,src/components/McpControlView.tsx,,,,/api/v1/mcp-servers/${encodeURIComponent(serverName)}/oauth/complete,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+mcp.oauth_cancel,3250,src/components/McpControlView.tsx,,,,/api/v1/mcp-servers/${encodeURIComponent(serverName)}/oauth/cancel,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+mcp.oauth_disconnect,3260,src/components/McpControlView.tsx,,,,/api/v1/mcp-servers/${encodeURIComponent(serverName)}/oauth,DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+media.generate_image,3271,src/components/RemoteContentControls.tsx,,,,/api/images/generate,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+media.edit_image,3289,src/components/RemoteContentControls.tsx,,,,/api/images/edit,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+media.generate_video,3308,src/components/RemoteContentControls.tsx,,,,/api/video/generate,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+media.cancel,3328,src/components/RemoteContentControls.tsx,,,,/api/${kind}/jobs/${encodeURIComponent(jobId)}/cancel,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+media.delete_history,3339,src/components/RemoteContentControls.tsx,,,,/api/${kind}/history/${encodeURIComponent(historyId)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+timetravel.apply,3350,src/components/AdvancedControls.tsx,,,,/api/sessions/${encodeURIComponent(targetSessionId)}/rewind,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+computer.update,3364,src/components/AdvancedControls.tsx,,,,/api/agent/settings,PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+computer.stop,3377,src/components/AdvancedControls.tsx,,,,/api/v1/computer-use/stop,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+process.start,3383,src/components/ActivityView.tsx,,,,/api/processes,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+process.control,3399,src/components/ActivityView.tsx,,,,/api/processes/${encodeURIComponent(processId)}/input; /api/processes/${encodeURIComponent(processId)}/restart; /api/processes/${encodeURIComponent(processId)}?signal=SIGTERM,DELETE; POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+process.cleanup,3428,src/components/ActivityView.tsx,tests/activity-view.test.tsx,,,/api/processes/cleanup,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+goal.create,3447,src/components/useReviewedWorkspaceCreate.ts,tests/remote-client.test.ts,,,/api/goals,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+goal.control,3470,src/components/WorkspaceControls.tsx,,,,/api/goals/${encodeURIComponent(goalId)}/${action}; /api/goals/${encodeURIComponent(goalId)}/drive,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+goal.update,3502,,,,,/api/goals/${encodeURIComponent(goalId)},PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+goal.checklist.update,3516,src/components/WorkspaceControls.tsx,tests/workspace-control-touch-accessibility.test.tsx,,,/api/goals/${encodeURIComponent(goalId)}/checklist,PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+goal.delete,3527,src/components/useReviewedWorkspaceDelete.ts,tests/workspace-delete-safety.test.tsx,,,/api/goals/${encodeURIComponent(goalId)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+checklist.create,3534,src/components/useReviewedWorkspaceCreate.ts,tests/remote-client.test.ts,,,/api/checklists,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+checklist.add_items,3553,src/components/WorkspaceControls.tsx,,,,/api/checklists/${encodeURIComponent(checklistId)}/items,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+checklist.replace_items,3566,src/components/WorkspaceControls.tsx,tests/workspace-control-touch-accessibility.test.tsx,,,/api/checklists/${encodeURIComponent(checklistId)}/items,PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+checklist.item_status,3577,src/components/WorkspaceControls.tsx,tests/workspace-control-touch-accessibility.test.tsx,,,/api/checklists/${encodeURIComponent(checklistId)}/items/${encodeURIComponent(itemId)},PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+checklist.update,3594,src/components/WorkspaceControls.tsx,,,,/api/checklists/${encodeURIComponent(checklistId)},PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+checklist.delete,3608,src/components/useReviewedWorkspaceDelete.ts,tests/workspace-delete-safety.test.tsx,,,/api/checklists/${encodeURIComponent(checklistId)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+git.refresh,3617,src/components/WorkspaceControls.tsx,,,,,,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+git.action,3622,src/components/WorkspaceControls.tsx,tests/workspace-control-touch-accessibility.test.tsx,,,/api/git/${action}; /api/git/checkout; /api/git/commit; /api/git/merge; /api/git/remote; /api/git/restore; /api/git/stage; /api/git/worktrees/${path},POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+git.chat_switch,3702,src/components/WorkspaceControls.tsx,,,,/api/git/chat/switch,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+agent.message,3720,src/components/AgentDetailView.tsx,,,desktop/shared/src/websocket/WSEvents.ts,/api/agent/${encodeURIComponent(agentId)}/message; /api/messages/,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+agent.control,3750,src/components/AgentDetailView.tsx; src/components/MobileWorkspaceView.tsx,tests/command-lifecycle.test.ts; tests/mobile-workspace.test.tsx,,,/api/agent/${encodeURIComponent(agentId)}/cancel; /api/sessions/${encodeURIComponent(sessionId)}/cancel,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+agent.message_decide,3765,src/components/AgentsView.tsx,,,,/api/v1/agent-messages/${encodeURIComponent(messageId)}/approve,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.refresh,3779,src/components/ProviderSettingsView.tsx,,,,/api/providers/${encodeURIComponent(provider)}/refresh,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.disconnect,3794,src/components/ProviderSettingsView.tsx,,,,/api/providers/${encodeURIComponent(provider)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.credentials.set,3802,src/components/ProviderSettingsView.tsx,,,,/api/providers/${encodeURIComponent(provider)},PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.custom.add,3825,src/components/ProviderSettingsView.tsx,,,,/api/providers/custom,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.custom.delete,3860,src/components/ProviderSettingsView.tsx,,,,/api/providers/custom/${encodeURIComponent(provider)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.custom.icon.set,3870,src/components/ProviderSettingsView.tsx,,,,/api/providers/custom/${encodeURIComponent(provider)}/icon,PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.custom.icon.remove,3883,src/components/ProviderSettingsView.tsx,,,,/api/providers/custom/${encodeURIComponent(provider)}/icon,DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.account.add,3893,src/components/ProviderSettingsView.tsx,,,,/api/providers/${encodeURIComponent(provider)}/accounts,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.account.activate,3915,src/components/ProviderSettingsView.tsx,,,,/api/providers/${encodeURIComponent(provider)}/accounts/${encodeURIComponent(accountId)}/activate,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.account.delete,3928,src/components/ProviderSettingsView.tsx,,,,/api/providers/${encodeURIComponent(provider)}/accounts/${encodeURIComponent(accountId)},DELETE,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.account.rename,3940,src/components/ProviderSettingsView.tsx,,,,/api/providers/${encodeURIComponent(provider)}/accounts/${encodeURIComponent(accountId)},PATCH,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.fallback.set,3953,src/components/ProviderSettingsView.tsx,,,,/api/providers/${encodeURIComponent(provider)}/fallback-order,PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.auth.start,3965,src/components/ProviderSettingsView.tsx,tests/remote-client.test.ts,,,/api/providers/${encodeURIComponent(provider)}/auth/start,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.auth.complete,3978,src/components/ProviderSettingsView.tsx,,,,/api/providers/${encodeURIComponent(provider)}/auth/complete,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+provider.auth.poll,3990,src/components/ProviderSettingsView.tsx,,,,,POST,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+setting.update,4006,src/components/NotesControlView.tsx; src/components/RemoteContentControls.tsx; src/components/SettingsView.tsx,tests/command-lifecycle.test.ts,,,/api/agent/settings; /api/appearance; /api/desktop-ui; /api/desktop-ui/shortcuts; /api/desktop-ui/welcome; /api/memory/settings; /api/mode; /api/notes/settings; /api/notes/settings/agent-permissions; /api/sessions/${encodeURIComponent(archivedId)}; /api/spend-caps/config; /api/v1/mcp-servers; /api/voice/settings,PATCH; POST; PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
+setting.action,4161,src/components/SettingsView.tsx,tests/settings-view.test.tsx,,,/api/agent/settings/reset; /api/agent/skills/${encodeURIComponent(name)}; /api/appearance; /api/billing/credits?refresh=1; /api/collab/host/start; /api/desktop-ui/onboarding/replay; /api/desktop-ui/shortcuts/reset; /api/desktop-ui/welcome/reset; /api/memory/settings/reset; /api/notes/settings/agent-permissions/reset; /api/providers/status?refreshModels=1; /api/sessions/${encodeURIComponent(archivedId)}; /api/sessions/${encodeURIComponent(archivedId)}/restore; /api/spend-caps/sessions/${encodeURIComponent(pausedId)}/resume; /api/v1/mcp-servers/${encodeURIComponent(serverName)},DELETE; POST; PUT,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED,NOT_VERIFIED
